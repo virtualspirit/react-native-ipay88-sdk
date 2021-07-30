@@ -52,10 +52,13 @@ repositories {
     }
     google()
     jcenter()
+    flatDir {
+        dirs 'libs'
+    }
 }
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation files('libs/ipay88_androidv7.jar')
+    implementation files('libs/ipay88_android.aar')
 }
   
