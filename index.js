@@ -18,7 +18,7 @@ export default class IPay extends Component {
     cancelNotify: PropTypes.func.isRequired,
   };
 
-  componentWillMount() {
+  componentDidMount() {
     if (isAndroid) {
       // Android
       successSubscription = DeviceEventEmitter.addListener('ipay88:success', (data) => this.onSuccess(data));
@@ -32,7 +32,7 @@ export default class IPay extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillUnmount() {
     successSubscription.remove();
     failedSubscription.remove();
     cancelSubscription.remove();
