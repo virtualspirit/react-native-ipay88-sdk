@@ -2,9 +2,11 @@
 
 ## Getting started
 
-`$ npm install ipay88-sdk --save`
+`$ yarn add https://github.com/virtualspirit/react-native-ipay88-sdk.git`
 
-### Mostly automatic installation
+### Install
+
+React native `0.60+` no extra steps, for react native `<0.60+` follow steps below.
 
 `$ react-native link ipay88-sdk`
 
@@ -180,3 +182,10 @@ export default class App extends Component {
 * amount
 * remark
 * error
+
+### Maintained by [Virtual Spirit Technology Sdn Bhd](https://virtualspirit.me/)
+
+Maintainer:
+- [Rahmat Zulfikri](https://github.com/RZulfikri)
+
+Any engineering support and project enquiry, kindly contact VirtualSpirit for any React Native projects.
