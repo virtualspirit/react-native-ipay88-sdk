@@ -1,5 +1,7 @@
 # React Native ipay88-sdk
 
+Bridge component for iPay88 SDK (IOS & Android), it using `iPay88 SDK v.1.0.6.6`
+
 ## Getting started
 
 `$ yarn add https://github.com/virtualspirit/react-native-ipay88-sdk.git`
