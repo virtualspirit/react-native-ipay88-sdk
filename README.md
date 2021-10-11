@@ -3,6 +3,7 @@
 Bridge component for iPay88 SDK (IOS & Android).
 
 `Android` IPay SDK Version: `v.1.6.8`
+
 `IOS` IPay SDK Version: `v.1.6.6`
 
 ## Getting started
