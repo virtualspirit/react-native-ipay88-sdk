@@ -43,71 +43,34 @@ public class IPay88Module extends ReactContextBaseJavaModule {
         context = getReactApplicationContext();
 
         // Precreate payment
-        IPayIHPayment payment = new IPayIHPayment();
-        payment.setMerchantKey (data.getString("merchantKey"));
-        payment.setMerchantCode (data.getString("merchantCode"));
-        payment.setPaymentId (data.getString("paymentId"));
-        payment.setCurrency (data.getString("currency"));
-        payment.setRefNo (data.getString("referenceNo"));
-        payment.setAmount (data.getString("amount"));
-        payment.setProdDesc (data.getString("productDescription"));
-        payment.setUserName (data.getString("userName"));
-        payment.setUserEmail (data.getString("userEmail"));
-        payment.setUserContact (data.getString("userContact"));
-        payment.setRemark (data.getString("remark"));
-        payment.setLang (data.getString("utfLang"));
-        payment.setCountry (data.getString("country"));
-        payment.setBackendPostURL (data.getString("backendUrl"));
+        try {
+            IPayIHPayment payment = new IPayIHPayment();
+            payment.setMerchantCode (data.getString("merchantCode"));
+            payment.setPaymentId (data.getString("paymentId"));
+            payment.setCurrency (data.getString("currency"));
+            payment.setRefNo (data.getString("referenceNo"));
+            payment.setAmount (data.getString("amount"));
+            payment.setProdDesc (data.getString("productDescription"));
+            payment.setUserName (data.getString("userName"));
+            payment.setUserEmail (data.getString("userEmail"));
+            payment.setRemark (data.getString("remark"));
+            payment.setLang (data.getString("utfLang"));
+            payment.setCountry (data.getString("country"));
+            payment.setBackendPostURL (data.getString("backendUrl"));
 
-        Intent checkoutIntent = IPayIH.getInstance().checkout(payment, getReactApplicationContext(), new ResultDelegate(), IPayIH.PAY_METHOD_CREDIT_CARD);
-        checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        context.startActivity(checkoutIntent);
-    }
-
-    static public class ResultDelegate implements IPayIHResultDelegate, Serializable {
-        @Override
-        public void onPaymentSucceeded(String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
+            Intent checkoutIntent = IPayIH.getInstance().checkout(payment, getReactApplicationContext(), new IPay88ResultDelegate(context), IPayIH.PAY_METHOD_CREDIT_CARD);
+            checkoutIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(checkoutIntent);
+        } catch (Exception e) {
             WritableMap params = Arguments.createMap();
-            params.putString("transactionId", s1);
-            params.putString("referenceNo", s2);
-            params.putString("amount", s3);
-            params.putString("remark", s4);
-            params.putString("authorizationCode", s5);
-            sendEvent(context, "ipay88:success", params);
-        }
-
-        @Override
-        public void onPaymentFailed(String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
-            WritableMap params = Arguments.createMap();
-            params.putString("transactionId", s1);
-            params.putString("referenceNo", s2);
-            params.putString("amount", s3);
-            params.putString("remark", s4);
-            params.putString("error", s5);
+            params.putString("referenceNo", data.getString("referenceNo"));
+            params.putString("amount", data.getString("amount"));
+            params.putString("remark", data.getString("remark"));
+            params.putString("error", e.getMessage());
             sendEvent(context, "ipay88:failed", params);
         }
-
-        @Override
-        public void onPaymentCanceled(String s, String s1, String s2, String s3, String s4, String s5, String s6, String s7, String s8) {
-            WritableMap params = Arguments.createMap();
-            params.putString("transactionId", s1);
-            params.putString("referenceNo", s2);
-            params.putString("amount", s3);
-            params.putString("remark", s4);
-            params.putString("error", s5);
-            sendEvent(context, "ipay88:canceled", params);
-        }
-
-        public void onRequeryResult (String merchantCode, String refNo, String amount, String result)
-        {
-            // No need to implement
-        }
-
-        @Override
-        public void onConnectionError(String s, String s1, String s2, String s3, String s4, String s5, String s6) {
-
-        }
     }
+
 
     static void sendEvent(ReactContext reactContext, String eventName, @Nullable WritableMap params) {
         reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class).emit(eventName, params);
