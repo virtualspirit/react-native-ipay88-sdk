@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90D15C212050793000A55741 /* libipay88sdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90D15C202050793000A55741 /* libipay88sdk.a */; };
+		44705C742AFB699300B34234 /* libipay88sdk.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44705C732AFB699300B34234 /* libipay88sdk.xcframework */; };
 		B3E7B58A1CC2AC0600A0062D /* RNIpay88Sdk.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RNIpay88Sdk.m */; };
 /* End PBXBuildFile section */
 
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNIpay88Sdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNIpay88Sdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		90D15C202050793000A55741 /* libipay88sdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libipay88sdk.a; sourceTree = "<group>"; };
+		44705C732AFB699300B34234 /* libipay88sdk.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = libipay88sdk.xcframework; sourceTree = "<group>"; };
 		90D15C26205079AF00A55741 /* IpayPayment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpayPayment.h; sourceTree = "<group>"; };
 		90D15C28205079AF00A55741 /* Ipay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ipay.h; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RNIpay88Sdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNIpay88Sdk.h; sourceTree = "<group>"; };
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90D15C212050793000A55741 /* libipay88sdk.a in Frameworks */,
+				44705C742AFB699300B34234 /* libipay88sdk.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,7 +67,7 @@
 		90D15C1F2050793000A55741 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				90D15C202050793000A55741 /* libipay88sdk.a */,
+				44705C732AFB699300B34234 /* libipay88sdk.xcframework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -111,6 +111,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;

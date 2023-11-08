@@ -1,7 +1,7 @@
-def DEFAULT_COMPILE_SDK_VERSION = 28
-def DEFAULT_BUILD_TOOLS_VERSION = '28.0.3'
-def DEFAULT_MIN_SDK_VERSION = 24
-def DEFAULT_TARGET_SDK_VERSION = 28
+def DEFAULT_COMPILE_SDK_VERSION = 31
+def DEFAULT_BUILD_TOOLS_VERSION = '30.0.3'
+def DEFAULT_MIN_SDK_VERSION = 21
+def DEFAULT_TARGET_SDK_VERSION = 231
 
 def safeExtGet(prop, fallback) {
     rootProject.ext.has(prop) ? rootProject.ext.get(prop) : fallback
@@ -27,7 +27,7 @@ android {
         minSdkVersion safeExtGet('minSdkVersion', DEFAULT_MIN_SDK_VERSION)
         targetSdkVersion safeExtGet('targetSdkVersion', DEFAULT_TARGET_SDK_VERSION)
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.9"
     }
 
     lintOptions {
@@ -59,6 +59,8 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     implementation files('libs/ipay88_android.aar')
 }
   
